@@ -19,6 +19,7 @@ public class Main {
     public String helloWord(){
         return applicationName;
     }
+
     public static void main(String[] args) {
        SpringApplication.run(Main.class, args);
     }
