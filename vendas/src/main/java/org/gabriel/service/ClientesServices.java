@@ -7,13 +7,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ClientesServices {
-
+    @Autowired(required = true)
     public ClientesRepository repository;
-
-    @Autowired
-    public ClientesServices (ClientesRepository repository){
-        this.repository = repository;
-    }
 
     public void salvarCliente(Cliente cliente){
         validarCliente(cliente);
