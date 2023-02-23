@@ -1,6 +1,5 @@
 package org.gabriel.domain.entity;
 
-import javax.persistence.criteria.CriteriaBuilder;
 
 public class Cliente {
 
