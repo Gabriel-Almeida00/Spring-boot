@@ -2,7 +2,7 @@ package org.gabriel;
 
 
 import org.gabriel.domain.entity.Cliente;
-import org.gabriel.domain.repositorio.Clientes;
+import org.gabriel.domain.repository.Clientes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
