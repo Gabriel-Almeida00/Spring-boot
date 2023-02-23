@@ -23,7 +23,7 @@ public class Pedido {
     @Column(name = "total", precision = 20, scale = 2)
     private BigDecimal total;
 
-    @OneToMany(mappedBy = "pedido", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 
     public List<ItemPedido> getItens() {

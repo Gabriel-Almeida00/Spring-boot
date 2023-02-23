@@ -40,7 +40,6 @@ public class Main {
             System.out.println(cliente);
             System.out.println(cliente.getPedidos());
 
-            pedidos.findByCliente(fulano).forEach(System.out::println);
         };
     }
 
