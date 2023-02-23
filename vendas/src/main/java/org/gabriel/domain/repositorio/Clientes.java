@@ -10,4 +10,7 @@ import java.util.Map;
 @Repository
 public interface Clientes extends JpaRepository<Cliente, Integer> {
     List<Cliente> findByNomeContains(String nome);
+
+    boolean existsByNome(String nome);
+
 }
