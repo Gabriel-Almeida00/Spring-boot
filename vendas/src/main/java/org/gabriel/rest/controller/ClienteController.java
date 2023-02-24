@@ -56,7 +56,8 @@ public class ClienteController {
                     cliente.setId(clienteExistente.getId());
                     clientes.save(cliente);
                     return clienteExistente;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                })
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Cliente não encontrado"));
     }
 
