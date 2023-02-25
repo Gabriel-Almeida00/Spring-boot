@@ -1,5 +1,6 @@
 package org.gabriel.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.gabriel.domain.entity.Cliente;
 import org.gabriel.domain.entity.ItemPedido;
 import org.gabriel.domain.entity.Pedido;
@@ -18,9 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
@@ -55,6 +58,7 @@ public class PedidoServiceImpl implements PedidoService {
         return pedido;
     }
 
+
     private List<ItemPedido> converterItems(Pedido pedido, List<ItemPedidoDTO> items) {
         if (items.isEmpty()) {
             throw new RegrasNegocioException
@@ -78,5 +82,10 @@ public class PedidoServiceImpl implements PedidoService {
 
                     return item;
                 }).collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Pedido> obterPedidoCompleto(Integer id) {
+        return pedidoRepository.findByIdFecthItens(id);
     }
 }
