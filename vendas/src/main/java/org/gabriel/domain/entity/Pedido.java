@@ -3,6 +3,7 @@ package org.gabriel.domain.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.gabriel.domain.enums.StatusPedido;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -33,5 +34,9 @@ public class Pedido {
 
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StatusPedido status;
 
 }

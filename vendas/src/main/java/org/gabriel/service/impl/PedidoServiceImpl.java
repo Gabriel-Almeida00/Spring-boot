@@ -5,6 +5,7 @@ import org.gabriel.domain.entity.Cliente;
 import org.gabriel.domain.entity.ItemPedido;
 import org.gabriel.domain.entity.Pedido;
 import org.gabriel.domain.entity.Produto;
+import org.gabriel.domain.enums.StatusPedido;
 import org.gabriel.domain.repository.Clientes;
 import org.gabriel.domain.repository.ItensPedidos;
 import org.gabriel.domain.repository.Pedidos;
@@ -50,6 +51,7 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setTotal(dto.getTotal());
         pedido.setDataPedido(LocalDate.now());
         pedido.setCliente(cliente);
+        pedido.setStatus(StatusPedido.REALIZADO);
 
         List<ItemPedido> itemsPedidos = converterItems(pedido, dto.getItens());
         pedidoRepository.save(pedido);
