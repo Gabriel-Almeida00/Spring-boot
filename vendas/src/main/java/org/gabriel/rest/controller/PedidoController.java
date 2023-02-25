@@ -2,6 +2,8 @@ package org.gabriel.rest.controller;
 
 import org.gabriel.domain.entity.ItemPedido;
 import org.gabriel.domain.entity.Pedido;
+import org.gabriel.domain.enums.StatusPedido;
+import org.gabriel.rest.dto.AtualizacaoStatusPedidoDTO;
 import org.gabriel.rest.dto.InformacaoItemPedidoDTO;
 import org.gabriel.rest.dto.InfromacoePedidoDTO;
 import org.gabriel.rest.dto.PedidoDTO;
@@ -29,6 +31,16 @@ public class PedidoController {
     public Integer save(@RequestBody PedidoDTO dto) {
         Pedido pedido = service.salvar(dto);
         return pedido.getId();
+    }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateStatus(@PathVariable Integer id,
+                             @RequestBody AtualizacaoStatusPedidoDTO dto){
+
+        String novoStatus = dto.getNovoStatus();
+        service.atualizarStatus(id, StatusPedido.valueOf(novoStatus));
+
     }
 
     @GetMapping("/{id}")

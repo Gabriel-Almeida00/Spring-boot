@@ -10,6 +10,7 @@ import org.gabriel.domain.repository.Clientes;
 import org.gabriel.domain.repository.ItensPedidos;
 import org.gabriel.domain.repository.Pedidos;
 import org.gabriel.domain.repository.Produtos;
+import org.gabriel.exception.PedidoNaoEncontradoExecption;
 import org.gabriel.exception.RegrasNegocioException;
 import org.gabriel.rest.dto.ItemPedidoDTO;
 import org.gabriel.rest.dto.PedidoDTO;
@@ -89,5 +90,17 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Optional<Pedido> obterPedidoCompleto(Integer id) {
         return pedidoRepository.findByIdFecthItens(id);
+    }
+
+    @Override
+    @Transactional
+    public void atualizarStatus(Integer id, StatusPedido statusPedido) {
+        pedidoRepository
+                .findById(id)
+                .map( pedido ->{
+                    pedido.setStatus(statusPedido);
+                    return pedidoRepository.save(pedido);
+                })
+                .orElseThrow( () -> new PedidoNaoEncontradoExecption());
     }
 }
