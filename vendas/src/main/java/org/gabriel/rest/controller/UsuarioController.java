@@ -26,4 +26,6 @@ public class UsuarioController {
         usuario.setSenha(senhaCriptografada);
         return usuarioService.salvar(usuario);
     }
+
+    
 }
