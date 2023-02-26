@@ -1,7 +1,7 @@
 package org.gabriel.rest.controller;
 
 import org.gabriel.domain.entity.Cliente;
-import org.gabriel.domain.repository.Clientes;
+import org.gabriel.domain.repository.ClientesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -17,7 +17,7 @@ import java.util.List;
 public class ClienteController {
 
     @Autowired
-    private Clientes clientes;
+    private ClientesRepository clientes;
 
 
     @GetMapping("/{id}")

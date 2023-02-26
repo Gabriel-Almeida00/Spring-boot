@@ -6,10 +6,10 @@ import org.gabriel.domain.entity.ItemPedido;
 import org.gabriel.domain.entity.Pedido;
 import org.gabriel.domain.entity.Produto;
 import org.gabriel.domain.enums.StatusPedido;
-import org.gabriel.domain.repository.Clientes;
-import org.gabriel.domain.repository.ItensPedidos;
-import org.gabriel.domain.repository.Pedidos;
-import org.gabriel.domain.repository.Produtos;
+import org.gabriel.domain.repository.ClientesRepository;
+import org.gabriel.domain.repository.ItensPedidosRepository;
+import org.gabriel.domain.repository.PedidosRepository;
+import org.gabriel.domain.repository.ProdutosRepository;
 import org.gabriel.exception.PedidoNaoEncontradoExecption;
 import org.gabriel.exception.RegrasNegocioException;
 import org.gabriel.rest.dto.ItemPedidoDTO;
@@ -29,16 +29,16 @@ import java.util.stream.Collectors;
 public class PedidoServiceImpl implements PedidoService {
 
     @Autowired
-    private Pedidos pedidoRepository;
+    private PedidosRepository pedidoRepository;
 
     @Autowired
-    private Clientes clienteRepository;
+    private ClientesRepository clienteRepository;
 
     @Autowired
-    private Produtos produtoRepository;
+    private ProdutosRepository produtoRepository;
 
     @Autowired
-    private ItensPedidos itensPedidosRepository;
+    private ItensPedidosRepository itensPedidosRepository;
 
     @Override
     @Transactional

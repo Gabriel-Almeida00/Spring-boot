@@ -1,7 +1,7 @@
 package org.gabriel.rest.controller;
 
 import org.gabriel.domain.entity.Produto;
-import org.gabriel.domain.repository.Produtos;
+import org.gabriel.domain.repository.ProdutosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -17,7 +17,7 @@ import java.util.List;
 public class ProdutoController {
 
     @Autowired
-    private Produtos repository;
+    private ProdutosRepository repository;
 
     @GetMapping("/{id}")
     public Produto getProdutoById(@PathVariable Integer id) {
