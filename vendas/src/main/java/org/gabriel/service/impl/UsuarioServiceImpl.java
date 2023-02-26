@@ -2,6 +2,7 @@ package org.gabriel.service.impl;
 
 import org.gabriel.domain.entity.Usuario;
 import org.gabriel.domain.repository.UsuarioRepository;
+import org.gabriel.exception.SenhaInvalidaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,6 +24,16 @@ public class UsuarioServiceImpl implements UserDetailsService {
     @Transactional
     public Usuario salvar(Usuario usuario){
         return usuarioRepository.save(usuario);
+    }
+
+    public UserDetails autenticar(Usuario  usuario){
+        UserDetails user =  loadUserByUsername(usuario.getLogin());
+        boolean senhasBatem = passwordEncoder.matches(usuario.getSenha(), user.getPassword());
+
+        if(senhasBatem){
+            return user;
+        }
+        throw new SenhaInvalidaException();
     }
 
     @Override
