@@ -20,7 +20,7 @@ public class LocalizacaoApplication implements CommandLineRunner {
 	}
 
 	void listarCidadePorNome(){
-		cidadeRepository.findByNomeContaining("a").forEach(System.out::println);
+		cidadeRepository.findByNomeLike("%c%").forEach(System.out::println);
 	}
 
 	void listarCidadePorHabitantes(){
