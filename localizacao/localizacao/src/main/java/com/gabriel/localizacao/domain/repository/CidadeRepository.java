@@ -20,6 +20,16 @@ public interface CidadeRepository extends JpaRepository<Cidade, Long> {
 
     List<Cidade> findByNomeContaining(String nome);
 
-
     List<Cidade> findByHabitantes(Long habitantes);
+
+    List<Cidade> findByHabitantesLessThan(Long habitantes);
+
+    List<Cidade> findByHabitantesGreaterThan(Long habitantes);
+
+    List<Cidade> findByHabitantesGreaterThanEqual(Long habitantes);
+
+    List<Cidade> findByHabitantesGreaterThanEqualAndNomeLike(Long habitantes, String nome);
+
+
+
 }
