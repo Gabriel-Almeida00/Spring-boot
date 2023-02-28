@@ -2,6 +2,7 @@ package com.gabriel.localizacao;
 
 import com.gabriel.localizacao.domain.entity.Cidade;
 import com.gabriel.localizacao.domain.repository.CidadeRepository;
+import com.gabriel.localizacao.service.CidadeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,34 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 public class LocalizacaoApplication implements CommandLineRunner {
 
 	@Autowired
-	private CidadeRepository cidadeRepository;
+	private CidadeService cidadeService;
 
 	@Override
 	public void run(String... args) throws Exception {
-		listarCidadesPorHabitantes();
-	}
-
-	void listarCidadesPorHabitantes(){
-		cidadeRepository.findByHabitantesGreaterThanEqualAndNomeLike(1000001L,"BR%" )
-				.forEach(System.out::println);
-	}
-
-	void listarCidadePorNome(){
-		cidadeRepository.findByNomeLike("%c%").forEach(System.out::println);
-	}
-
-	void listarCidadePorHabitantes(){
-		cidadeRepository.findByHabitantes(10000000L).forEach(System.out::println);
-	}
-
-	@Transactional
-	void salvarcidade(){
-		var cidade = new Cidade(1L,"são paulo", 12396372L);
-		cidadeRepository.save(cidade);
-	}
-
-	void listarCidade(){
-		cidadeRepository.findAll().forEach(System.out::println);
+		cidadeService.listarCidadePorNome();
 	}
 
 	public static void main(String[] args) {
