@@ -2,8 +2,10 @@ package com.gabriel.localizacao.service;
 
 import com.gabriel.localizacao.domain.entity.Cidade;
 import com.gabriel.localizacao.domain.repository.CidadeRepository;
+import com.gabriel.localizacao.service.specs.CidadeSpecs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,5 +51,11 @@ public class CidadeService {
         Example<Cidade> example = Example
                 .of(cidade, mather);
         return cidadeRepository.findAll(example);
+    }
+
+    public void listarCidadeByNomeSpecs(){
+        Specification<Cidade> spec = CidadeSpecs.nomeEqual("São Paulo")
+                .and(CidadeSpecs.habitantesGreaterThan(1000));
+        cidadeRepository.findAll(spec).forEach(System.out::println);
     }
 }
